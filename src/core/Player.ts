@@ -232,7 +232,7 @@ export default class Player {
       return `function descramble_nsig(a) { let b=String.prototype.split.call(a, "")${sc}} return Array.prototype.join.call(b, ""); } descramble_nsig(nsig)`;
 
     // We really should throw an error here to avoid errors later, returning a pass-through function for backwards-compatibility
-    Log.warn(TAG, 'Failed to extract n-token decipher algorithm');
+    Log.warn(Player.TAG, 'Failed to extract n-token decipher algorithm');
 
     return 'function descramble_nsig(a) { return a; } descramble_nsig(nsig)';
   }
