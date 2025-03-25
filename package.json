@@ -77,7 +77,7 @@
     "clean:source-maps": "rimraf ./bundle/browser.js.map ./bundle/node.cjs.map ./bundle/cf-worker.js.map ./bundle/react-native.js.map",
     "clean:build-output": "rimraf ./dist ./bundle/browser.js ./bundle/node.cjs ./bundle/cf-worker.js ./bundle/react-native.js ./deno",
     "build": "npm run clean:build-output && npm run clean:source-maps && npm run build:parser-map && npm run build:esm && npm run bundle:node && npm run bundle:browser && npm run bundle:cf-worker && npm run bundle:react-native",
-    "build:esm": "tspc",
+    "build:esm": "tspc --noCheck",
     "build:deno": "cpy ./src ./deno && cpy ./protos ./deno && esbuild ./src/utils/DashManifest.tsx --keep-names --format=esm --platform=neutral --target=es2020 --outfile=./deno/src/utils/DashManifest.js && cpy ./package.json ./deno && replace \".js';\" \".ts';\" ./deno -r && replace '.js\";' '.ts\";' ./deno -r && replace \"'./DashManifest.ts';\" \"'./DashManifest.js';\" ./deno -r && replace \"'jintr';\" \"'jsr:@luanrt/jintr';\" ./deno -r && replace \"@bufbuild/protobuf/wire\" \"https://esm.sh/@bufbuild/protobuf@2.0.0/wire\" ./deno -r",
     "build:proto": "rimraf ./protos/generated && node ./dev-scripts/generate-proto.mjs",
     "build:parser-map": "node ./dev-scripts/gen-parser-map.mjs",
@@ -108,7 +108,7 @@
     "undici": "^5.19.1"
   },
   "overrides": {
-    "typescript": "^5.0.0"
+    "typescript": "^5.6.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
@@ -125,12 +125,12 @@
     "replace": "^1.2.2",
     "rimraf": "^6.0.1",
     "ts-jest": "^29.1.4",
-    "ts-patch": "^3.0.2",
+    "ts-patch": "^3.3.0",
     "ts-proto": "^2.2.0",
     "ts-transformer-inline-file": "^0.2.0",
     "typedoc": "^0.26.7",
     "typedoc-plugin-markdown": "^4.2.7",
-    "typescript": "^5.0.0",
+    "typescript": "^5.6.0",
     "typescript-eslint": "^8.2.0"
   },
   "bugs": {
